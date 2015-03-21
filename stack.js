@@ -17,5 +17,13 @@ var Stack = (function() {
     return this.dataStore[this.top - 1];
   };
 
+  Stack.prototype.length = function() {
+    return this.top;
+  };
+
+  Stack.prototype.clear = function() {
+    this.top = 0;
+  };
+
   return Stack;
 })();
