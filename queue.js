@@ -37,5 +37,9 @@ var Queue = (function() {
     }
   };
 
+  Queue.prototype.count = function() {
+    return this.dataStore.length;
+  };
+
   return Queue;
 })();
