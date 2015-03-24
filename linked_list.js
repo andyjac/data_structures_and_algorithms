@@ -24,7 +24,7 @@ var LList = (function() {
   LList.prototype.remove = function(item) {
     var prevNode = findPrevious.call(this, item);
 
-    if (!(prevNode.next === null)) {
+    if (prevNode.next !== null) {
       prevNode.next = prevNode.next.next;
     }
   };
@@ -58,7 +58,7 @@ var LList = (function() {
   function findPrevious(item) {
     var currNode = this.head;
 
-    while (!(currNode.next === null) &&
+    while ((currNode.next !== null) &&
            (currNode.next.element !== item)) {
       currNode = currNode.next;
     }
