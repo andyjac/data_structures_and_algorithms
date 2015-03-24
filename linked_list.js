@@ -30,9 +30,13 @@ var LList = (function() {
   };
 
   LList.prototype.advance = function(n) {
-    var currNode = this.head, count = n;
+    var count = n, currNode;
 
     if (n === 0) throw new Error("Cannot advance 0 times");
+
+    this.currNode.next === null ?
+      currNode = this.head :
+      currNode = this.currNode;
 
     while ((count > 0) &&
            (currNode.next !== null)) {
