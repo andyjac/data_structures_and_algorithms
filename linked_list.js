@@ -2,6 +2,7 @@ var LList = (function() {
 
   function LList() {
     this.head = new Node('head');
+    this.currNode = this.head;
   }
 
   LList.prototype.insert = function(newElement, item) {
@@ -26,6 +27,23 @@ var LList = (function() {
     if (!(prevNode.next === null)) {
       prevNode.next = prevNode.next.next;
     }
+  };
+
+  LList.prototype.advance = function(n) {
+    var currNode = this.head, count = n;
+
+    if (n === 0) throw new Error("Cannot advance 0 times");
+
+    while ((count > 0) &&
+           (currNode.next !== null)) {
+      currNode = currNode.next;
+      count--;
+    }
+    this.currNode = currNode;
+  };
+
+  LList.prototype.show = function() {
+    return this.currNode.element;
   };
 
   function find(item) {
