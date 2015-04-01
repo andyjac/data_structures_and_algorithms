@@ -7,7 +7,18 @@ var Set = (function() {
   Set.prototype = {
 
     add: function(data) {
+      if (this.size() === 0) {
+        this.dataStore.push(data);
+        return true;
+      }
+
       if (this.dataStore.indexOf(data) < 0) {
+        for (var i = 0; i < this.size(); i++) {
+          if (this.dataStore[i] >= data) {
+            this.dataStore.splice(i, 0, data);
+            return true;
+          }
+        }
         this.dataStore.push(data);
         return true;
       } else {
