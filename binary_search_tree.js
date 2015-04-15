@@ -170,11 +170,9 @@ var BST = (function() {
             break;
           case 1:
             if (current.data < parent.data) {
-              parent.left = (current.left === null ?
-                             current.right : current.left);
+              parent.left = (current.left === null ? current.right : current.left);
             } else {
-              parent.right = (current.left === null ?
-                              current.right : current.left);
+              parent.right = (current.left === null ? current.right : current.left);
             }
             break;
           case 2:
