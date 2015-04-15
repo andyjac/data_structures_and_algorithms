@@ -19,7 +19,7 @@ var Dictionary = (function() {
     },
 
     showAll: function() {
-      var keys = Object.keys(this.dataStore);
+      var keys = Object.keys(this.dataStore).sort();
 
       if (keys.length === 0) {
         console.log("This dictionary is empty");
