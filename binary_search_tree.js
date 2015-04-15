@@ -176,7 +176,8 @@ var BST = (function() {
             }
             break;
           case 2:
-            replacement = current.left, replacementParent = current;
+            replacement = current.left
+            replacementParent = current;
 
             while (replacement.right !== null) {
               replacementParent = replacement;
