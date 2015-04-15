@@ -129,17 +129,16 @@ var BST = (function() {
       }
 
       if (found) {
-        childCount = (current.left !== null ? 1 : 0) +
-                     (current.right !== null ? 1 : 0);
+        childCount = (current.left !== null ? 1 : 0) + (current.right !== null ? 1 : 0);
 
         if (current === this.root) {
+
           switch (childCount) {
           case 0:
             this.root = null;
             break;
           case 1:
-            this.root = (current.right === null ?
-                         current.left : current.right);
+            this.root = (current.right === null ? current.left : current.right);
             break;
           case 2:
             replacement = this.root.left;
@@ -160,6 +159,7 @@ var BST = (function() {
             this.root = replacement;
           }
         } else {
+
           switch (childCount) {
           case 0:
             if (current.data < parent.data) {
