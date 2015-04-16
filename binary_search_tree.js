@@ -114,7 +114,7 @@ var BST = (function() {
     },
 
     remove: function(data) {
-      root = removeNode.call(this, this.root, data);
+      removeNode.call(this, this.root, data);
     }
   };
 
