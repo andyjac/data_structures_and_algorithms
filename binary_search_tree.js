@@ -28,16 +28,20 @@ var BST = (function() {
         this.root = n;
       } else {
         var current = this.root, parent;
+
         while (true) {
           parent = current;
+
           if (data < current.data) {
             current = current.left;
+
             if (current === null) {
               parent.left = n;
               break;
             }
           } else {
             current = current.right;
+
             if (current === null) {
               parent.right = n;
               break;
@@ -100,6 +104,7 @@ var BST = (function() {
         } else {
           current = current.right;
         }
+
         if (current === null) {
           return null;
         }
@@ -114,15 +119,23 @@ var BST = (function() {
   };
 
   function removeNode(node, data) {
-    if (node === null) return null;
+    if (node === null) {
+      return null;
+    }
 
     if (data === node.data) {
 
-      if (node.left === null && node.right === null) return null;
+      if (node.left === null && node.right === null) {
+        return null;
+      }
 
-      if (node.right === null) return node.left;
+      if (node.right === null) {
+        return node.left;
+      }
 
-      if (node.left === null) return node.right;
+      if (node.left === null) {
+        return node.right;
+      }
 
       var tempNode = getSmallest.call(this, node.right);
       node.data = tempNode.data;
