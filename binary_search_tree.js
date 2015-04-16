@@ -109,101 +109,42 @@ var BST = (function() {
     },
 
     remove: function(data) {
-      var found = false
-        , current = this.root
-        , parent = null
-        , replacementParent = null
-        , childCount
-        , replacement;
-
-      while (!found && current) {
-        if (data < current.data) {
-          parent = current;
-          current = current.left;
-        } else if (data > current.data) {
-          parent = current;
-          current = current.right;
-        } else {
-          found = true;
-        }
-      }
-
-      if (found) {
-        childCount = (current.left !== null ? 1 : 0) + (current.right !== null ? 1 : 0);
-
-        if (current === this.root) {
-
-          switch (childCount) {
-          case 0:
-            this.root = null;
-            break;
-          case 1:
-            this.root = (current.right === null ? current.left : current.right);
-            break;
-          case 2:
-            replacement = this.root.left;
-
-            while (replacement.right !== null) {
-              replacementParent = replacement;
-              replacement = replacement.right;
-            }
-
-            if (replacementParent !== null) {
-              replacementParent.right = replacement.left;
-              replacement.right = this.root.right;
-              replacement.left = this.root.left;
-            } else {
-              replacement.right = this.root.right;
-            }
-
-            this.root = replacement;
-          }
-        } else {
-
-          switch (childCount) {
-          case 0:
-            if (current.data < parent.data) {
-              parent.left = null;
-            } else {
-              parent.right = null;
-            }
-            break;
-          case 1:
-            if (current.data < parent.data) {
-              parent.left = (current.left === null ? current.right : current.left);
-            } else {
-              parent.right = (current.left === null ? current.right : current.left);
-            }
-            break;
-          case 2:
-            replacement = current.left
-            replacementParent = current;
-
-            while (replacement.right !== null) {
-              replacementParent = replacement;
-              replacement = replacement.right;
-            }
-
-            if (replacementParent === current) {
-              replacement.right = current.right;
-            } else {
-              replacementParent.right = replacement.left;
-              replacement.right = current.right;
-              replacement.left = current.left;
-            }
-
-            if (current.data < parent.data) {
-              parent.left = replacement;
-            } else {
-              parent.right = replacement;
-            }
-          }
-        }
-      }
-
-      return false;
+      root = removeNode.call(this, this.root, data);
     }
   };
+
+  function removeNode(node, data) {
+    if (node === null) return null;
+
+    if (data === node.data) {
+
+      if (node.left === null && node.right === null) return null;
+
+      if (node.right === null) return node.left;
+
+      if (node.left === null) return node.right;
+
+      var tempNode = getSmallest.call(this, node.right);
+      node.data = tempNode.data;
+      node.right = removeNode.call(this, node.right, tempNode.data);
+      return node;
+
+    } else if (data < node.data) {
+      node.left = removeNode.call(this, node.left, data);
+      return node;
+    } else {
+      node.right = removeNode.call(this, node.right, data);
+      return node;
+    }
+  }
+
+  function getSmallest(node) {
+    if (node.left === null) {
+      return node;
+    } else {
+      return getSmallest.call(this, node.left);
+    }
+  }
 
   return BST;
 })();
