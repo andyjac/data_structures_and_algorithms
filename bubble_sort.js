@@ -1,5 +1,5 @@
 function bubbleSort(arr) {
-  var numElements = arr.length, temp;
+  var numElements = arr.length;
 
   for (var outer = numElements; outer >= 2; --outer) {
     for (var inner = 0; inner <= outer - 1; ++inner) {

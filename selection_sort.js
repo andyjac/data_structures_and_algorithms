@@ -1,5 +1,5 @@
 function selectionSort(arr) {
-  var numElements = arr.length, outer, min, inner, temp;
+  var numElements = arr.length, outer, min, inner;
 
   for (outer = 0; outer < numElements - 1; ++outer) {
     min = outer;
