@@ -5,7 +5,6 @@ function selectionSort(arr) {
     min = outer;
     for (inner = outer + 1; inner < numElements - 1; ++inner) {
       if (arr[inner] < arr[min]) {
-        console.log(arr[inner] + ' < ' + arr[min]);
         min = inner;
       }
     }
