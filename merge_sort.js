@@ -30,14 +30,12 @@ function mergeArrays(arr, startLeft, stopLeft, startRight, stopRight) {
 
   k = startLeft;
   for (i = 0; i < leftArr.length - 1; ++i) {
-    leftArr[i] = arr[k];
-    ++k;
+    leftArr[i] = arr[k++];
   }
 
   k = startRight;
   for (i = 0; i < rightArr.length - 1; ++i) {
-    rightArr[i] = arr[k];
-    ++k;
+    rightArr[i] = arr[k++];
   }
 
   leftArr[leftArr.length - 1] = Infinity;
@@ -47,11 +45,9 @@ function mergeArrays(arr, startLeft, stopLeft, startRight, stopRight) {
 
   for (k = startLeft; k < stopRight; ++k) {
     if (leftArr[m] <= rightArr[n]) {
-      arr[k] = leftArr[m];
-      m++;
+      arr[k] = leftArr[m++];
     } else {
-      arr[k] = rightArr[n];
-      n++;
+      arr[k] = rightArr[n++];
     }
   }
 }
